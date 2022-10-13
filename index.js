@@ -1,5 +1,5 @@
 import {AppRegistry} from 'react-native';
-import App from './src/toDo/App';
+import Router from './src/KebapFitness/Router';
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => App);
+AppRegistry.registerComponent(appName, () => Router);
