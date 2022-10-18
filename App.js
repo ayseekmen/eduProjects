@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';// drawer navigasyon paketi için eklendi.
 
-import App from './src/nestedNavigation/Router'
+import App from './src/apiRequest/App'
 
 const App2 =()=>{
     return(
