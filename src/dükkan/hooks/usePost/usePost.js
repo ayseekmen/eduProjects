@@ -11,8 +11,10 @@ function usePost() {
             setLoading(true);
             const { data: responseData } = await axios.post(url, apiData);
             setData(responseData);
+            console.log("data",responseData)
             setLoading(false);
         } catch (err) {
+            console.log("err",err)
             setError(err);
             setLoading(false);
         }
