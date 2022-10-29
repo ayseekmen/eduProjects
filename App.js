@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';// drawer navigasyon paketi için eklendi.
 
-import App from './src/dükkan/Wrapper'
+import App from './src/learningRedux/App'
 
 const App2 =()=>{
     return(
