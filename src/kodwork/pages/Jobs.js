@@ -11,10 +11,6 @@ const Jobs = ({ navigation }) => {
             .then((res) => setResult(res.data.results))
     }, [])
 
-
-
-
-
     return (
         <SafeAreaView style={styles.container}>
             {
@@ -27,7 +23,7 @@ const Jobs = ({ navigation }) => {
                                     style={styles.cardContainer}
 
                                     onPress={() => {
-                                        navigation.navigate('JobsDetailScreen',item)
+                                        navigation.navigate('JobsDetailScreen', item)
                                     }}
                                 >
                                     <Text style={styles.jobName} numberOfLines={1} >{item.name}</Text>
@@ -49,7 +45,7 @@ const Jobs = ({ navigation }) => {
     )
 }
 
-export default Jobs
+export default Jobs;
 
 const styles = StyleSheet.create({
     container: {
@@ -69,6 +65,7 @@ const styles = StyleSheet.create({
         marginLeft: 3,
         fontWeight: 'bold',
         fontSize: 20,
+        color: 'black',
     },
     jobCategories: {
         marginLeft: 3,
