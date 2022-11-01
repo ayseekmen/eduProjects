@@ -7,26 +7,24 @@ import Jobs from './pages/Jobs';
 import JobsDetail from './pages/JobsDetail';
 import Favorites from './pages/Favorites'
 
-
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const RouterStack = () => {
     return (
-        <Stack.Navigator screenOptions={{
-            headerShown: false,
-        }}>
-            <Stack.Screen name="JobsScreen" component={Jobs} />
-            <Stack.Screen name="JobsDetailScreen" component={JobsDetail} />
+        <Stack.Navigator>
+            <Stack.Screen options={{ headerTintColor: '#ee534f' }} name="Jobs" component={Jobs} />
+            <Stack.Screen options={{ drawerActiveTintColor: '#ee534f', headerTintColor: '#ee534f' }} name="JobsDetailScreen" component={JobsDetail} />
         </Stack.Navigator>
     );
 };
 
 const RouterDrawer = () => {
     return (
-        <Stack.Navigator screenOptions={{
-            headerShown: false,
-        }}>
+        <Stack.Navigator
+            screenOptions={{
+                headerShown: false,
+            }}>
             <Stack.Screen name="FavoritedJobsScreen" component={Favorites} />
         </Stack.Navigator>
     );
@@ -35,9 +33,12 @@ const RouterDrawer = () => {
 function Router() {
     return (
         <NavigationContainer>
-            <Drawer.Navigator>
-                <Drawer.Screen options={{ drawerActiveTintColor: '#ee534f' }} name="Jobs" component={RouterStack} />
-                <Drawer.Screen options={{ drawerActiveTintColor: '#ee534f' }} name="Favorited Jobs" component={RouterDrawer} />
+            <Drawer.Navigator
+                screenOptions={{
+                    headerShown: false,
+                }}>
+                <Drawer.Screen options={{ drawerActiveTintColor: '#ee534f', headerTintColor: '#ee534f' }} name="Jobs " component={RouterStack} />
+                <Drawer.Screen options={{ drawerActiveTintColor: '#ee534f', headerTintColor: '#ee534f' }} name="Favorited Jobs" component={RouterDrawer} />
             </Drawer.Navigator>
         </NavigationContainer >
     )
