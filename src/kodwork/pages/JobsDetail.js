@@ -1,16 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { SafeAreaView, Text, View, useWindowDimensions, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
 import RenderHtml from 'react-native-render-html';
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { useDispatch } from "react-redux";
+import { setFavorited } from "../redux/FavoritedRedux";
+import { untis } from "../styles/units";
 
-function JobsDetail({ route }) {
+function JobsDetail({ route, navigation }) {
 
     const params = route.params
+
 
     const source = {
         html: params.contents
     };
     const { width } = useWindowDimensions();
+
+
+    const dispatch = useDispatch()
+
+    const onPress = () => {
+        dispatch(setFavorited(params))
+    }
+
+
+    //sayfadayken navigasyon header başlığını değistirmek
+    useEffect(() => {
+        navigation.setOptions({
+            title: params.name
+        })
+    }, [])
+
 
     return (
         <SafeAreaView style={styles.container}>
@@ -33,11 +53,11 @@ function JobsDetail({ route }) {
             </ScrollView>
 
             <View style={styles.buttonWrapper}>
-                <TouchableOpacity style={styles.submitButton}>
+                <TouchableOpacity style={styles.submitButton} >
                     <Icon name={"login"} size={20} color='#ffffff' />
                     <Text style={styles.submitButtonText}>Submit</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.favoriteJobButton}>
+                <TouchableOpacity style={styles.favoriteJobButton} onPress={onPress}>
                     <Icon name={"cards-heart"} size={20} color='#ffffff' />
                     <Text style={styles.favoriteJobButtonText}>Favorite Job</Text>
                 </TouchableOpacity>
@@ -95,7 +115,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
         borderColor: '#e6e6e6',
         borderWidth: 1,
-        height: 510,
+        height: untis.height / 1.8,
         marginLeft: 10,
         marginRight: 10,
     },
@@ -112,7 +132,7 @@ const styles = StyleSheet.create({
     submitButton: {
         backgroundColor: '#ee534f',
         borderRadius: 10,
-        width: 170,
+        width: untis.width / 2.5,
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: 10,
