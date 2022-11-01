@@ -45,7 +45,7 @@ const Jobs = ({ navigation }) => {
     )
 }
 
-export default Jobs;
+export default Jobs
 
 const styles = StyleSheet.create({
     container: {
