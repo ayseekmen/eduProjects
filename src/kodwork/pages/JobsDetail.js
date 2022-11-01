@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
         borderColor: '#e6e6e6',
         borderWidth: 1,
-        height: untis.height / 1.8,
+        height: untis.height / 1.7,
         marginLeft: 10,
         marginRight: 10,
     },
