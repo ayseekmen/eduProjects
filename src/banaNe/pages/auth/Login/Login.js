@@ -27,7 +27,7 @@ const Login = ({ navigation }) => {
             await auth().signInWithEmailAndPassword(
                 formValues.usermail,
                 formValues.password
-            ).then(() => {navigation.navigate('MessagePage')})
+            ).then(() => {navigation.navigate('MessageScreen')})
             setLoading(false);
         } catch (error) {
             showMessage({
