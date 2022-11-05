@@ -1,0 +1,31 @@
+{
+  "age": 29,
+  "books": [
+    null,
+    {
+      "name": "Innsmouth Üzerindeki Gölge",
+      "writer": "HP Lovecraft"
+    },
+    {
+      "name": "Sefiller",
+      "writer": "Victor Hugo"
+    },
+    {
+      "name": "Kinyas ve Kayra",
+      "writer": "Hakan Günday"
+    }
+  ],
+  "car": {
+    "rentable": {
+      "-NFxi1EQ6_70PCRqLh98": {
+        "brand": "Passat",
+        "model": "81",
+        "price": 650
+      },
+      "brand": "Audi",
+      "model": "A3",
+      "price": 128
+    }
+  },
+  "name": "ayse"
+}
