@@ -1,6 +1,6 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 
-export default StyleSheet.create({ 
+export default StyleSheet.create({
     container: {
         padding: 10,
         margin: 10,
@@ -9,6 +9,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
     },
     input: {
-        flex:1,
+        flex: 1,
+        padding: Platform.OS === 'android' ? 0 : 5,
     }
 })
