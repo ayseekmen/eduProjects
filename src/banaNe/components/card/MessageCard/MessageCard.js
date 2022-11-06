@@ -19,7 +19,7 @@ const MessageCard = ({ message, onBanane }) => {
             <Text style={styles.title}>{message.text}</Text>
             <View style={styles.footer}>
                 <TouchableOpacity style={styles.dislike_container} onPress={onBanane}>
-                    {true && (
+                    {!!message.dislike && (
                         <View style={styles.dislike_count_container}>
                             <Text style={styles.dislike_count_text}>{message.dislike}</Text>
                         </View>

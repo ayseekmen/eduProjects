@@ -18,16 +18,17 @@ export default StyleSheet.create({
   },
   user: {
     color: 'white',
-    fontSize: 13,
+    fontSize: 15,
     padding: 10,
   },
   date: {
     color: 'white',
     padding: 10,
+    fontStyle: 'italic',
   },
   title: {
     color: 'white',
-    fontSize: 14,
+    fontSize: 20,
     fontWeight: 'bold',
     marginLeft:10,
   },
@@ -41,7 +42,7 @@ export default StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 20,
     alignItems: 'center',
-    margin: 5,
+    margin: 7,
   },
   dislike_count_container: {
     backgroundColor: colors.darkgreen,
