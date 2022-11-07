@@ -49,19 +49,17 @@ const Messages = () => {
 
   function handleBanane(item) {
     database()
-    .ref(`messages/${item.id}/`)
-    .update({dislike: item.dislike + 1});
+      .ref(`messages/${item.id}/`)
+      .update({ dislike: item.dislike + 1 });
   }
 
   const renderContent = ({ item }) => {
 
-    
-    return(
+    return (
 
       <MessagesCard message={item} onBanane={() => handleBanane(item)} />
     )
   }
-  
 
   return (
     <SafeAreaView style={styles.container}>
