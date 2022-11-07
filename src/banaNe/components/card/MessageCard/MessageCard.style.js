@@ -1,5 +1,4 @@
-import {StyleSheet} from 'react-native';
-import { color, ColorSpace } from 'react-native-reanimated';
+import { StyleSheet } from 'react-native';
 import colors from '../../../styles/colors';
 
 export default StyleSheet.create({
@@ -13,7 +12,7 @@ export default StyleSheet.create({
     minHeight: 25,
     justifyContent: 'space-between',
     backgroundColor: colors.darkgreen,
-    borderRadius:10,
+    borderRadius: 10,
     padding: 3,
   },
   user: {
@@ -30,7 +29,7 @@ export default StyleSheet.create({
     color: 'white',
     fontSize: 20,
     fontWeight: 'bold',
-    marginLeft:10,
+    marginLeft: 10,
   },
   footer: {
     alignItems: 'flex-end',
