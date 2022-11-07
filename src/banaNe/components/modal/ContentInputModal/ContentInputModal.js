@@ -1,21 +1,21 @@
-import React, {useState} from 'react';
-import {View, TextInput} from 'react-native';
+import React, { useState } from 'react';
+import { View, TextInput } from 'react-native';
 import Modal from 'react-native-modal';
 import Button from '../../Button';
 
 import styles from './ContentInputModal.style';
 
-const ContentInputModal = ({visible, onClose, onSend}) => {
+const ContentInputModal = ({ visible, onClose, onSend }) => {
   const [text, setText] = useState(null);
 
-function handleSend() {
-  if (!text) {
-    return;
+  function handleSend() {
+    if (!text) {
+      return;
+    }
+
+    onSend(text);
+    setText(null);
   }
-  
-  onSend(text);
-  setText(null);
-}
 
   return (
     <Modal
