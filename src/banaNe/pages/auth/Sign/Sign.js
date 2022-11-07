@@ -23,7 +23,7 @@ const Sign = ({ navigation }) => {
     }
 
     async function handleFormSubmit(formValues) {
-        if (formValues.password !== formValues.repassword){
+        if (formValues.password !== formValues.repassword) {
             showMessage({
                 message: 'Şifreler uyuşmuyor',
                 type: "danger",
@@ -40,13 +40,13 @@ const Sign = ({ navigation }) => {
             showMessage({
                 message: 'Kullanıcı oluşturuldu',
                 type: "success",
-              });
+            });
             setLoading(false);
         } catch (error) {
             showMessage({
                 message: authErrorMessageParser(error.code),
                 type: "danger",
-              });
+            });
             setLoading(false);
         }
     }
