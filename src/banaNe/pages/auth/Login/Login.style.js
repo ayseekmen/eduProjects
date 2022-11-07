@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 
 import colors from '../../../styles/colors';
 
@@ -10,7 +10,7 @@ export default StyleSheet.create({
     body_container: {
         flex: 1,
     },
-    header : {
+    header: {
         color: colors.darkgreen,
         margin: 5,
         fontSize: Platform.OS === 'android' ? 120 : 160,

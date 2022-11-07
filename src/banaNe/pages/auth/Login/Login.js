@@ -27,34 +27,34 @@ const Login = ({ navigation }) => {
             await auth().signInWithEmailAndPassword(
                 formValues.usermail,
                 formValues.password
-            ).then(() => {navigation.navigate('MessagesScreen')})
+            ).then(() => { navigation.navigate('MessagesScreen') })
             setLoading(false);
         } catch (error) {
             showMessage({
                 message: authErrorMessageParser(error.code),
                 type: "danger",
-              });
-              
+            });
+
             setLoading(false);
         }
-     }
+    }
 
     return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.header}>bana ne?</Text>
             <Formik initialValues={initialFormValues} onSubmit={handleFormSubmit} >
-                {({values, handleChange, handleSubmit}) => (
+                {({ values, handleChange, handleSubmit }) => (
                     <>
                         <Input
-                        value={values.usermail}
-                        onType={handleChange('usermail')}
-                        placeholder="e-postanızı giriniz.."
+                            value={values.usermail}
+                            onType={handleChange('usermail')}
+                            placeholder="e-postanızı giriniz.."
                         />
                         <Input
-                        onType={handleChange('password')}
-                        value={values.password}
-                        placeholder="şifrenizi giriniz.."
-                        isSecure
+                            onType={handleChange('password')}
+                            value={values.password}
+                            placeholder="şifrenizi giriniz.."
+                            isSecure
                         />
                         <Button text="Giriş Yap" onPress={handleSubmit} loading={loading} />
                     </>
