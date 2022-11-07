@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text, TouchableOpacity, ActivityIndicator, View } from 'react-native';
-import { Icon } from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import styles from './Button.style';
 
@@ -11,14 +10,13 @@ const Button = ({ text, onPress, loading, icon, theme = 'primary' }) => {
             style={styles[theme].container}
             onPress={onPress}
             disabled={loading}>
-                {loading ? (
-                    <ActivityIndicator color="white" />
-                ) : (
-                    <View style={styles[theme].button_container}>
-                        {/* <Icon name={icon} color="white" size={18}/> */}
-                        <Text style={styles[theme].text}>{text}</Text>
-                    </View>
-                )}
+            {loading ? (
+                <ActivityIndicator color="white" />
+            ) : (
+                <View style={styles[theme].button_container}>
+                    <Text style={styles[theme].text}>{text}</Text>
+                </View>
+            )}
         </TouchableOpacity>
     );
 };
