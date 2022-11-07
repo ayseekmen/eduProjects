@@ -17,7 +17,7 @@ export default function (errorCode) {
 
     case 'auth/wrong-password':
       return 'Parola geçersiz';
-      
+
     default:
       return errorCode;
   }
