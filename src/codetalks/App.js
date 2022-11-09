@@ -20,38 +20,40 @@ export default () => {
         });
     }, []);
 
-const AuthStack = () => {
-    return (
-            <Stack.Navigator screenOptions={{headerShown: false}}>
+    const AuthStack = () => {
+        return (
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="LoginPage" component={Login} />
                 <Stack.Screen name="SignPage" component={Sign} />
             </Stack.Navigator>
-    );
-}
+        );
+    }
 
-return (
-    <NavigationContainer>
-        {!userSession ? (
-            <AuthStack />
-        ) : (
-            <Stack.Navigator>
-                <Stack.Screen
-                    name="RoomsPage"
-                    component={Rooms}
-                    options={{
+    return (
+        <NavigationContainer>
+            {!userSession ? (
+                <AuthStack />
+            ) : (
+                <Stack.Navigator>
+                    <Stack.Screen
+                        name="RoomsPage"
+                        component={Rooms}
+                        options={{
+                            title: 'Odalar',
+                            headerTintColor: '#fe9f40',
                         headerRight: () => (
-                            <Icon
-                                name="logout"
-                                size={30}
-                                color={'red'}
-                                onPress={() => auth().signOut()}
-                            />
-                        ),
-                    }}
-                />
-            </Stack.Navigator>
-        )}
-        <FlashMessage position="top" />
-    </NavigationContainer>
-);
+                                <Icon
+                                    name="logout"
+                                    size={30}
+                                    color={'#fe9f40'}
+                                    onPress={() => auth().signOut()}
+                                />
+                            ),
+                        }}
+                    />
+                </Stack.Navigator>
+            )}
+            <FlashMessage position="top" />
+        </NavigationContainer>
+    );
 };
