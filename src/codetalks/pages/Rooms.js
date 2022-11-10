@@ -5,23 +5,25 @@ import { units } from "../styles/units";
 
 function Rooms() {
 
-    const [rooms, setRooms] = useState([123])
+    const [rooms, setRooms] = useState([])
     const [newRoom, setNewRoom] = useState("")
     const [modal, setModal] = useState(false)
 
     return (
         <SafeAreaView style={styles.container}>
-            <FlatList
-                numColumns={2}
-                data={rooms}
-                renderItem={({ item }) => {
-                    return (
-                        <View style={styles.body_container}>
-                            <Text>{item}</Text>
-                        </View>
-                    )
-                }}
-            />
+            <View style={styles.flatlist_container}>
+                <FlatList
+                    numColumns={2}
+                    data={rooms}
+                    renderItem={({ item }) => {
+                        return (
+                            <TouchableOpacity style={styles.body_container}>
+                                <Text style={styles.item_text} >{item}</Text>
+                            </TouchableOpacity>
+                        )
+                    }}
+                />
+            </View>
             <TouchableOpacity style={styles.floating_button}
                 onPress={() => setModal(true)}>
                 <Icon name="plus" color="white" size={30} />
@@ -32,7 +34,8 @@ function Rooms() {
                 transparent
                 animationType='slide'
             >
-                <View style={styles.modal_container} >
+                                
+                <TouchableOpacity style={styles.modal_container} onPress={() => {setModal(false)}} >
                     <View style={styles.modal_box}>
                         <View style={styles.input_container}>
                             <TextInput
@@ -53,7 +56,7 @@ function Rooms() {
                         </TouchableOpacity>
                     </View>
 
-                </View>
+                </TouchableOpacity>
 
             </Modal>
         </SafeAreaView>
@@ -67,17 +70,24 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white',
-        justifyContent: 'space-between',
+    },
+    flatlist_container: {
+        alignItems:'center'
     },
     body_container: {
         width: units.height / 5,
         height: units.height / 4,
-        backgroundColor: "red",
-        marginVertical: 20,
         justifyContent: "center",
         alignItems: "center",
         borderWidth: 1,
-        marginHorizontal: 20
+        marginHorizontal:10,
+        marginVertical:10,
+        borderRadius:10,
+        borderColor: '#e0e0e0'
+    },
+    item_text: {
+        fontSize: 28,
+        color: '#ff9f40',
     },
     floating_button: {
         position: 'absolute',
