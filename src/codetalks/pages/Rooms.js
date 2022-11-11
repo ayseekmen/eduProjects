@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FlatList, Modal, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { units } from "../styles/units";
+import database from "@react-native-firebase/database";
 
-function Rooms() {
+const Rooms = ({ navigation }) => {
 
     const [rooms, setRooms] = useState([])
     const [newRoom, setNewRoom] = useState("")
     const [modal, setModal] = useState(false)
+
+    function handleMessages() {
+        navigation.navigate("MessagesPage");
+    }
+    
 
     return (
         <SafeAreaView style={styles.container}>
@@ -17,7 +23,7 @@ function Rooms() {
                     data={rooms}
                     renderItem={({ item }) => {
                         return (
-                            <TouchableOpacity style={styles.body_container}>
+                            <TouchableOpacity style={styles.body_container} onPress={handleMessages}>
                                 <Text style={styles.item_text} >{item}</Text>
                             </TouchableOpacity>
                         )
