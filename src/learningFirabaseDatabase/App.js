@@ -6,7 +6,7 @@ export default () => {
 
     //database'den verileri çeker. ref() içine ne yazılırsa o verileri getirir, bi şey yazılmazsa tüm verileri getirir
     const checkDB = () => {
-        const reference = database().ref('books/');
+        const reference = database().ref('car/');
         reference.once('value').then(snapshot => {
             const response = snapshot.val()
             console.log(response);
@@ -14,7 +14,7 @@ export default () => {
     };
     // database'i dinler. Butona basmasan bile tüm değişiklikleri consolda gösterir
     const listenDB = () => {
-        const reference = database().ref('books/');
+        const reference = database().ref('car/');
         reference.on('value', snapshot => {
             console.log(snapshot.val());
         });
