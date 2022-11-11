@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { FlatList, Modal, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { FlatList, Modal, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View, Button } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { units } from "../styles/units";
 import database from "@react-native-firebase/database";
+
 
 const Rooms = ({ navigation }) => {
 
@@ -10,10 +11,28 @@ const Rooms = ({ navigation }) => {
     const [newRoom, setNewRoom] = useState("")
     const [modal, setModal] = useState(false)
 
-    function handleMessages() {
-        navigation.navigate("MessagesPage");
-    }
-    
+
+
+    //database'e veri göndermek için kullanılır.
+    const setRoomsToDB = (rooms) => {
+        const reference = database().ref('rooms');
+
+        reference.set(rooms)
+    };
+
+
+    useEffect(() => {
+        // database'i dinler. Bir kere çalışması yeterlidir.
+        const listenDB = () => {
+            const reference = database().ref('rooms/');
+            reference.on('value', snapshot => {
+                setRooms(snapshot.val())
+            });
+        };
+
+        listenDB()
+    }, [])
+
 
     return (
         <SafeAreaView style={styles.container}>
@@ -23,7 +42,11 @@ const Rooms = ({ navigation }) => {
                     data={rooms}
                     renderItem={({ item }) => {
                         return (
-                            <TouchableOpacity style={styles.body_container} onPress={handleMessages}>
+                            <TouchableOpacity
+                                style={styles.body_container}
+                                onPress={() => {
+                                    navigation.navigate("MessagesPage", { item })
+                                }}>
                                 <Text style={styles.item_text} >{item}</Text>
                             </TouchableOpacity>
                         )
@@ -40,8 +63,7 @@ const Rooms = ({ navigation }) => {
                 transparent
                 animationType='slide'
             >
-                                
-                <TouchableOpacity style={styles.modal_container} onPress={() => {setModal(false)}} >
+                <TouchableOpacity style={styles.modal_container} onPress={() => { setModal(false) }} >
                     <View style={styles.modal_box}>
                         <View style={styles.input_container}>
                             <TextInput
@@ -49,21 +71,24 @@ const Rooms = ({ navigation }) => {
                                 value={newRoom}
                                 onChangeText={setNewRoom}
                                 multiline
+                                style={{ flex: 1 }}
                             />
                         </View>
                         <TouchableOpacity
                             style={styles.input_button_container}
                             onPress={() => {
                                 setModal(false)
-                                setRooms([...rooms, newRoom])
+                                if (rooms) {
+                                    setRoomsToDB([...rooms, newRoom])
+                                } else {
+                                    setRoomsToDB([newRoom])
+                                }
                                 setNewRoom("")
                             }} >
                             <Text style={styles.input_button_text}>Ekle</Text>
                         </TouchableOpacity>
                     </View>
-
                 </TouchableOpacity>
-
             </Modal>
         </SafeAreaView>
     );
@@ -78,7 +103,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
     },
     flatlist_container: {
-        alignItems:'center'
+        alignItems: 'center'
     },
     body_container: {
         width: units.height / 5,
@@ -86,9 +111,9 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         borderWidth: 1,
-        marginHorizontal:10,
-        marginVertical:10,
-        borderRadius:10,
+        marginHorizontal: 10,
+        marginVertical: 10,
+        borderRadius: 10,
         borderColor: '#e0e0e0'
     },
     item_text: {

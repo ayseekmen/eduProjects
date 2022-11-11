@@ -8,6 +8,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Login from './pages/Login'
 import Sign from './pages/Sign'
 import Rooms from './pages/Rooms'
+import Messages from "./pages/Messages";
 
 const Stack = createNativeStackNavigator();
 
@@ -51,6 +52,7 @@ export default () => {
                             ),
                         }}
                     />
+                    <Stack.Screen name="MessagesPage" component={Messages} />
                 </Stack.Navigator>
             )}
             <FlashMessage position="top" />
