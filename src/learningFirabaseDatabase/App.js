@@ -12,7 +12,7 @@ export default () => {
             console.log(response);
         });
     };
-    // database'i dinler. Butona basmasan bile tüm değişiklikleri consolda gösterir
+    // database'i dinler. Bir kere çalışması yeterlidir. Butona basmasan bile tüm değişiklikleri consolda gösterir
     const listenDB = () => {
         const reference = database().ref('car/');
         reference.on('value', snapshot => {
