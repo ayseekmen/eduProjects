@@ -42,7 +42,7 @@ export default () => {
                         options={{
                             title: 'Odalar',
                             headerTintColor: '#fe9f40',
-                        headerRight: () => (
+                            headerRight: () => (
                                 <Icon
                                     name="logout"
                                     size={30}
@@ -52,7 +52,20 @@ export default () => {
                             ),
                         }}
                     />
-                    <Stack.Screen name="MessagesPage" component={Messages} />
+                    <Stack.Screen name="MessagesPage"
+                        component={Messages}
+                        options={{
+                            headerTintColor: '#fe9f40',
+                            headerRight: () => (
+                                <Icon
+                                    name="logout"
+                                    size={30}
+                                    color={'#fe9f40'}
+                                    onPress={() => auth().signOut()}
+                                />
+                            ),
+                        }}
+                    />
                 </Stack.Navigator>
             )}
             <FlashMessage position="top" />
