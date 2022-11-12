@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { FlatList, Modal, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View, Button } from "react-native";
+import { FlatList, Modal, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { units } from "../styles/units";
 import database from "@react-native-firebase/database";
 
+import { units } from "../styles/units";
 
 const Rooms = ({ navigation }) => {
 
@@ -11,15 +11,11 @@ const Rooms = ({ navigation }) => {
     const [newRoom, setNewRoom] = useState("")
     const [modal, setModal] = useState(false)
 
-
-
     //database'e veri göndermek için kullanılır.
     const setRoomsToDB = (rooms) => {
         const reference = database().ref('rooms');
-
         reference.set(rooms)
     };
-
 
     useEffect(() => {
         // database'i dinler. Bir kere çalışması yeterlidir.
@@ -29,7 +25,6 @@ const Rooms = ({ navigation }) => {
                 setRooms(snapshot.val())
             });
         };
-
         listenDB()
     }, [])
 
@@ -53,10 +48,12 @@ const Rooms = ({ navigation }) => {
                     }}
                 />
             </View>
+
             <TouchableOpacity style={styles.floating_button}
                 onPress={() => setModal(true)}>
                 <Icon name="plus" color="white" size={30} />
             </TouchableOpacity>
+
             <Modal
                 style={styles.modal}
                 visible={modal}
@@ -67,26 +64,28 @@ const Rooms = ({ navigation }) => {
                     <View style={styles.modal_box}>
                         <View style={styles.input_container}>
                             <TextInput
+                                style={styles.input}
                                 placeholder="Oda adı..."
+                                multiline
                                 value={newRoom}
                                 onChangeText={setNewRoom}
-                                multiline
-                                style={{ flex: 1 }}
                             />
                         </View>
+
                         <TouchableOpacity
                             style={styles.input_button_container}
                             onPress={() => {
                                 setModal(false)
                                 if (rooms) {
-                                    setRoomsToDB([...rooms, newRoom])
+                                    setRoomsToDB([...rooms, newRoom.trim()])
                                 } else {
-                                    setRoomsToDB([newRoom])
+                                    setRoomsToDB([newRoom.trim()])
                                 }
                                 setNewRoom("")
                             }} >
                             <Text style={styles.input_button_text}>Ekle</Text>
                         </TouchableOpacity>
+
                     </View>
                 </TouchableOpacity>
             </Modal>
@@ -96,14 +95,13 @@ const Rooms = ({ navigation }) => {
 
 export default Rooms;
 
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white',
     },
     flatlist_container: {
-        alignItems: 'center'
+        alignItems: 'center',
     },
     body_container: {
         width: units.height / 5,
@@ -114,7 +112,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
         marginVertical: 10,
         borderRadius: 10,
-        borderColor: '#e0e0e0'
+        borderColor: '#e0e0e0',
     },
     item_text: {
         fontSize: 28,
@@ -136,7 +134,7 @@ const styles = StyleSheet.create({
     },
     modal_container: {
         flex: 1,
-        backgroundColor: 'rgba(0,0,0,0.4)'
+        backgroundColor: 'rgba(0,0,0,0.7)',
     },
     modal_box: {
         backgroundColor: 'white',
@@ -147,9 +145,12 @@ const styles = StyleSheet.create({
         bottom: 0,
         width: units.width / 1.05,
         alignSelf: 'center',
-        padding: 10
+        padding: 10,
     },
     input_container: {
+        flex: 1,
+    },
+    input: {
         flex: 1,
     },
     input_button_container: {
@@ -158,12 +159,12 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         borderRadius: 5,
         alignItems: 'center',
-        backgroundColor: '#ff9f40'
+        backgroundColor: '#ff9f40',
     },
     input_button_text: {
         color: 'white',
         fontSize: 20,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     }
 })
 
