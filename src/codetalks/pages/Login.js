@@ -1,22 +1,19 @@
 import React, { useState } from "react";
-import { SafeAreaView, Text, TextInput, StyleSheet, TouchableOpacity, Platform, ActivityIndicator, View } from "react-native";
+import { SafeAreaView, Text, TextInput, StyleSheet, TouchableOpacity, Platform, ActivityIndicator} from "react-native";
 import { showMessage } from "react-native-flash-message";
 import auth from '@react-native-firebase/auth';
 
 import authErrorMessageParser from "../utils/authErrorMessageParser";
 
-
 const Login = ({ navigation }) => {
 
     const [loading, setLoading] = useState(false)
-
     const [usermail, setUsermail] = useState("")
     const [password, setPassword] = useState("")
 
     function handleSignUp() {
         navigation.navigate("SignPage");
     }
-
 
     async function handleFormSubmit() {
         try {
@@ -39,6 +36,7 @@ const Login = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.appName}>codetalks</Text>
+
             <TextInput
                 autoCapitalize="none"
                 value={usermail}
@@ -60,11 +58,10 @@ const Login = ({ navigation }) => {
             <TouchableOpacity
                 onPress={handleFormSubmit}
                 style={styles.loginButtonContainer}>
-            {loading ? (<ActivityIndicator color={'white'} />) :
-                   
-               ( <Text style={styles.loginButton}>Giriş Yap</Text>)}
-            </TouchableOpacity>
+                {loading ? (<ActivityIndicator color={'white'} />) :
 
+                    (<Text style={styles.loginButton}>Giriş Yap</Text>)}
+            </TouchableOpacity>
 
             <TouchableOpacity
                 style={styles.signUpButtonContainer}
@@ -75,6 +72,7 @@ const Login = ({ navigation }) => {
     );
 }
 
+export default Login;
 
 const styles = StyleSheet.create({
     container: {
@@ -95,9 +93,6 @@ const styles = StyleSheet.create({
         marginVertical: 15,
         fontSize: 17,
     },
-
-    //
-
     loginButtonContainer: {
         backgroundColor: '#fe9f40',
         borderWidth: 1,
@@ -129,5 +124,3 @@ const styles = StyleSheet.create({
         color: '#fe9f40',
     },
 })
-
-export default Login;
