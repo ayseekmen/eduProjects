@@ -2,14 +2,11 @@ import React, { useState } from "react";
 import { SafeAreaView, Text, TextInput, StyleSheet, TouchableOpacity, Platform, ActivityIndicator } from "react-native";
 import auth from '@react-native-firebase/auth';
 import { showMessage } from "react-native-flash-message";
+
 import authErrorMessageParser from "../utils/authErrorMessageParser";
-
-
-
 
 const Sign = ({ navigation }) => {
     const [loading, setLoading] = useState(false)
-
     const [usermail, setUsermail] = useState("")
     const [password, setPassword] = useState("")
     const [repassword, setRepassword] = useState("")
@@ -49,7 +46,6 @@ const Sign = ({ navigation }) => {
         }
     }
 
-
     return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.appName}>codetalks</Text>
@@ -79,15 +75,12 @@ const Sign = ({ navigation }) => {
                 placeholderTextColor={'#ffe8d6'}
                 secureTextEntry />
 
-
             <TouchableOpacity
                 style={styles.signUpButtonContainer}
                 onPress={handleSubmit}>
-                    {loading ? (<ActivityIndicator color={'white'}/>) :  
-                (<Text style={styles.signUpButton}>Kayıt Ol</Text>)}
+                {loading ? (<ActivityIndicator color={'white'} />) :
+                    (<Text style={styles.signUpButton}>Kayıt Ol</Text>)}
             </TouchableOpacity>
-
-
 
             <TouchableOpacity
                 style={styles.backButtonContainer}
@@ -97,7 +90,6 @@ const Sign = ({ navigation }) => {
         </SafeAreaView>
     );
 }
-
 
 export default Sign;
 
@@ -120,9 +112,6 @@ const styles = StyleSheet.create({
         marginVertical: 15,
         fontSize: 17,
     },
-
-    //
-
     signUpButtonContainer: {
         backgroundColor: '#fe9f40',
         borderWidth: 1,
