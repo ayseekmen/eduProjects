@@ -14,12 +14,25 @@ exports[`should match with snapshot 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
+      "alignItems": "center",
+      "backgroundColor": "blue",
+      "borderRadius": 10,
+      "justifyContent": "center",
+      "margin": 10,
       "opacity": 1,
+      "padding": 10,
     }
   }
+  testID="button-touchable"
 >
-  <Text>
-    1
-  </Text>
+  <Text
+    style={
+      Object {
+        "color": "white",
+        "fontWeight": "bold",
+      }
+    }
+    testID="button-title"
+  />
 </View>
 `;
