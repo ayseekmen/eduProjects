@@ -3,10 +3,12 @@ import { TouchableOpacity, Text, View } from "react-native";
 
 import styles from './Button.style'
 
-const Button = () => {
-    return(
+const Button = ({ title }) => {
+    return (
         <TouchableOpacity style={styles.container}>
-            <Text style={styles.title}>Button</Text>
+            <Text testID="button-title" style={styles.title}>
+                {title}
+            </Text>
         </TouchableOpacity>
     )
 }

@@ -6,7 +6,7 @@ const App = () => {
     return(
         <SafeAreaView>
             <Text>Testing</Text>
-            <Button />
+            <Button title="Selamlar!" />
         </SafeAreaView>
     )
 }
