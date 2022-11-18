@@ -1,5 +1,5 @@
 
-import App from './src/learningTest/App'
+import App from './src/codetalks/App'
 
 const App2 =()=>{
     return(
