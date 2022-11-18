@@ -1,0 +1,5 @@
+The Mobile App Path with React Native:
+https://app.patika.dev/certificates/fba44484
+
+React Native Challange:
+https://app.patika.dev/certificates/95934570
