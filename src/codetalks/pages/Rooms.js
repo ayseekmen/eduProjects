@@ -20,13 +20,14 @@ const Rooms = ({ navigation }) => {
     useEffect(() => {
         // database'i dinler. Bir kere çalışması yeterlidir.
         const listenDB = () => {
-            const reference = database().ref('rooms/');
+            const reference = database().ref('myData/');
             reference.on('value', snapshot => {
                 setRooms(snapshot.val())
             });
         };
         listenDB()
     }, [])
+    console.log(myData)
 
 
     return (
