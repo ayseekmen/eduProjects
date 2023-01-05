@@ -4,17 +4,26 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 function App() {
 
-    const alphabet = ["A","B","C","D","E",]
+    const alphabet = ["A", "B", "C", "D", "E"]
 
 
     const [index, setIndex] = useState(0);
 
     function arttırHarf() {
-        setIndex(index +1);
+        if (index == alphabet.length - 1) {
+            setIndex(0)
+        } else {
+            setIndex(index + 1)
+        }
     }
 
     function azaltHarf() {
-        setIndex(index-1);
+        if (index == 0) {
+            setIndex(alphabet.length - 1)
+        } else {
+            setIndex(index - 1)
+        }
+        
     }
 
     return (
