@@ -1,5 +1,5 @@
 
-import App from './src/codetalks/App'
+import App from './src/learninigUseStateUseEffect/Router'
 
 const App2 =()=>{
     return(
