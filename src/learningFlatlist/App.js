@@ -1,30 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, TouchableOpacity, SafeAreaView, FlatList, StyleSheet, View } from "react-native";
 
 
 export default function App() {
 
-const alphabet = ["A", "B", "C", "D", "E", "F", "G"]
+    const alphabet = ["A", "B", "C", "D", "E", "F", "G"]
 
-     
-    const renderFlatlistItem = ({item}) =>  {
-        
+    const [letter, setLetter] = useState()
+
+
+    const renderFlatlistItem = ({ item }) => {
         return (
             <TouchableOpacity style={styles.container}
-            onPress={() => {
-                
-            }}>
-                <View style={styles.buttonContainer}>
-                <Text style={styles.text}>{item}</Text>
+                onPress={() => {
+                    setLetter(item)
+                }}>
+                <View style={[styles.buttonContainer, item == letter && {backgroundColor:"red"}]}>
+                    <Text style={styles.text}>{item}</Text>
                 </View>
             </TouchableOpacity>
         )
     }
 
     return (
-        <SafeAreaView  style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <FlatList
-            horizontal
+                horizontal
                 data={alphabet}
                 renderItem={renderFlatlistItem}
             />
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     text: {
-fontSize: 30,
-alignSelf: 'center'
+        fontSize: 30,
+        alignSelf: 'center'
     }
 })
