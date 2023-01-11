@@ -8,7 +8,6 @@ export default function App() {
 
     const [letter, setLetter] = useState()
 
-
     const renderFlatlistItem = ({ item }) => {
         return (
             <TouchableOpacity style={styles.container}
